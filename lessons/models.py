@@ -1,0 +1,18 @@
+from django.db import models
+
+class Lesson(models.Model):
+    title = models.CharField(max_length=200)
+    style = models.CharField(max_length=200)
+    level = models.CharField(max_length=200)
+    content = models.TextField()
+    def __str__(self):
+        return self.level + " " + self.style + " " + self.title
+
+class Practice(models.Model):
+    date = models.DateTimeField()
+    location = models.CharField(max_length=200)
+    overview = models.CharField(max_length=200)
+    notes = models.CharField(max_length=700)
+    lessons = models.ManyToManyField(Lesson)
+    def __str__(self):
+        return self.date + " " + self.overview
