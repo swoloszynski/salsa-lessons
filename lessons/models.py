@@ -6,7 +6,7 @@ class Lesson(models.Model):
     level = models.CharField(max_length=200)
     content = models.TextField()
     def __str__(self):
-        return self.level + " " + self.style + " " + self.title
+        return self.level + " " + self.style + " - " + self.title
 
 class Practice(models.Model):
     date = models.DateTimeField()
@@ -15,4 +15,5 @@ class Practice(models.Model):
     notes = models.CharField(max_length=700)
     lessons = models.ManyToManyField(Lesson)
     def __str__(self):
-        return self.date + " " + self.overview
+        date_string = self.date.strftime("%b %d, %Y")
+        return date_string + " - " + self.overview
