@@ -13,12 +13,7 @@ class Practice(models.Model):
     location = models.CharField(max_length=200)
     overview = models.CharField(max_length=200)
     notes = models.CharField(max_length=700)
-    teachings = models.ManyToManyField(Lesson, through='Teaches', through_fields=('practice', 'lesson'))
+    lessons = models.ManyToManyField(Lesson)
     def __str__(self):
         date_string = self.date.strftime("%b %d, %Y")
         return date_string + " - " + self.overview
-
-class Teaches(models.Model):
-    practice = models.ForeignKey(Practice)
-    lesson = models.ForeignKey(Lesson)
-    note = models.CharField(max_length=200)
