@@ -1,5 +1,5 @@
 from django.contrib import admin
-from lessons.models import Practice, Lesson
+from lessons.models import Practice, Lesson, Instructor
 
 class TeachingsInline(admin.TabularInline):
     model = Practice.teachings.through
@@ -18,3 +18,4 @@ class PracticeAdmin(admin.ModelAdmin):
 
 admin.site.register(Practice, PracticeAdmin)
 admin.site.register(Lesson)
+admin.site.register(Instructor)
