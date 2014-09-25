@@ -33,7 +33,7 @@ class Lesson(models.Model):
         return name
 
 class Practice(models.Model):
-    date = models.DateTimeField()
+    date = models.DateField()
     location = models.CharField(max_length=200)
     overview = models.CharField(max_length=200)
     notes = models.CharField(max_length=700, blank=True, null=True)

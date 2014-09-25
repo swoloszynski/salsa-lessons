@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='Teaches',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('note', models.CharField(max_length=200)),
+                ('notes', models.CharField(max_length=200)),
                 ('lesson', models.ForeignKey(to='lessons.Lesson')),
                 ('practice', models.ForeignKey(to='lessons.Practice')),
             ],
