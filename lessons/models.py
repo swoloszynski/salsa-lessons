@@ -34,7 +34,7 @@ class Lesson(models.Model):
 
 class Practice(models.Model):
     date = models.DateField()
-    location = models.CharField(max_length=200)
+    location = models.CharField(max_length=200, blank=True)
     overview = models.CharField(max_length=200)
     notes = models.CharField(max_length=700, blank=True, null=True)
     teachings = models.ManyToManyField(Lesson, through='Teaches', through_fields=('practice', 'lesson'))
