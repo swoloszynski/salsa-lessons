@@ -9,6 +9,8 @@ class LessonAdmin(admin.ModelAdmin):
     inlines = [
         TeachingsInline,
     ]
+    list_display = ('title', 'level', 'style')
+    list_filter = ('level', 'style', 'title')
 
 class PracticeAdmin(admin.ModelAdmin):
     inlines = [
