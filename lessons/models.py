@@ -22,7 +22,15 @@ class Lesson(models.Model):
     style = models.CharField(max_length=200, choices=Style_CHOICES, blank=True)
     content = models.TextField()
     def __str__(self):
-        return self.level + " " + self.style + " - " + self.title
+        name = ""
+        if (self.level != ""):
+            name += self.level + " "
+        if (self.style != ""):
+            name += self.style + " "
+        if (name != ""):
+            name += "- "
+        name += self.title
+        return name
 
 class Practice(models.Model):
     date = models.DateTimeField()
