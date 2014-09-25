@@ -42,6 +42,20 @@ class Practice(models.Model):
         date_string = self.date.strftime("%b %d, %Y")
         return date_string + " - " + self.overview
 
+class Instructor(models.Model):
+    first = models.CharField(max_length=200)
+    last = models.CharField(max_length=200)
+    year = models.IntegerField()
+    # TODO add phone validation
+    phone = models.CharField(max_length=15)
+    email = models.EmailField()
+    isLead = models.BooleanField(default=False)
+    isFollow = models.BooleanField(default=False)
+    isActive = models.BooleanField(default=True)
+    notes = models.TextField()
+    def __str__(self):
+        return self.first + " " + self.last
+
 class Teaches(models.Model):
     practice = models.ForeignKey(Practice)
     lesson = models.ForeignKey(Lesson)
