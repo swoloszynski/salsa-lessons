@@ -18,8 +18,8 @@ class Lesson(models.Model):
         ('Rueda', 'Rueda'),
     )
     title = models.CharField(max_length=200)
-    style = models.CharField(max_length=200, choices=Style_CHOICES, blank=True)
     level = models.CharField(max_length=200, choices=LEVEL_CHOICES, blank=True)
+    style = models.CharField(max_length=200, choices=Style_CHOICES, blank=True)
     content = models.TextField()
     def __str__(self):
         return self.level + " " + self.style + " - " + self.title
