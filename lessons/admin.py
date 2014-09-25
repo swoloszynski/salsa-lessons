@@ -12,6 +12,8 @@ class LessonAdmin(admin.ModelAdmin):
     list_display = ('title', 'level', 'style')
     list_filter = ('level', 'style', 'title')
 
+admin.site.register(Lesson, LessonAdmin)
+
 class PracticeAdmin(admin.ModelAdmin):
     inlines = [
         TeachingsInline,
@@ -21,5 +23,9 @@ class PracticeAdmin(admin.ModelAdmin):
     list_filter = ['date', 'overview', 'location']
 
 admin.site.register(Practice, PracticeAdmin)
-admin.site.register(Lesson, LessonAdmin)
-admin.site.register(Instructor)
+
+class InstructorAdmin(admin.ModelAdmin):
+    list_display = ('first', 'last', 'isActive')
+    list_filter = ('isLead', 'isFollow', 'year', 'isActive')
+
+admin.site.register(Instructor, InstructorAdmin)
