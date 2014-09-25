@@ -10,8 +10,15 @@ class Lesson(models.Model):
         ('Intermediate', 'Intermediate'),
         ('Advanced', 'Advanced'),
     )
+    Style_CHOICES = (
+        ('On1 Salsa', 'On1 Salsa'),
+        ('On2 Salsa', 'On2 Salsa'),
+        ('Bachata', 'Bachata'),
+        ('On2 Cha Cha', 'On2 Cha Cha'),
+        ('Rueda', 'Rueda'),
+    )
     title = models.CharField(max_length=200)
-    style = models.CharField(max_length=200)
+    style = models.CharField(max_length=200, choices=Style_CHOICES, blank=True)
     level = models.CharField(max_length=200, choices=LEVEL_CHOICES, blank=True)
     content = models.TextField()
     def __str__(self):
