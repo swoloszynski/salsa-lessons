@@ -52,7 +52,7 @@ class Instructor(models.Model):
     isLead = models.BooleanField(default=False)
     isFollow = models.BooleanField(default=False)
     isActive = models.BooleanField(default=True)
-    notes = models.TextField()
+    notes = models.TextField(null=True, blank=True)
     def __str__(self):
         return self.first + " " + self.last
 
