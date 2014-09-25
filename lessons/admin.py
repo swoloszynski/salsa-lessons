@@ -19,5 +19,5 @@ class PracticeAdmin(admin.ModelAdmin):
     list_filter = ['date', 'overview', 'location']
 
 admin.site.register(Practice, PracticeAdmin)
-admin.site.register(Lesson)
+admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Instructor)
