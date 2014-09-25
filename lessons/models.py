@@ -1,9 +1,18 @@
 from django.db import models
 
 class Lesson(models.Model):
+    # first in tuple stored in database and used as title in admin table,
+    # second displayed in admin drop down
+    LEVEL_CHOICES = (
+        ('Intro', 'Intro'),
+        ('Beginner', 'Beginner'),
+        ('Accelerated Beginner', 'Accelerated Beginner'),
+        ('Intermediate', 'Intermediate'),
+        ('Advanced', 'Advanced'),
+    )
     title = models.CharField(max_length=200)
     style = models.CharField(max_length=200)
-    level = models.CharField(max_length=200)
+    level = models.CharField(max_length=200, choices=LEVEL_CHOICES, blank=True)
     content = models.TextField()
     def __str__(self):
         return self.level + " " + self.style + " - " + self.title
