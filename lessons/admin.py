@@ -25,7 +25,7 @@ class PracticeAdmin(admin.ModelAdmin):
 admin.site.register(Practice, PracticeAdmin)
 
 class InstructorAdmin(admin.ModelAdmin):
-    list_display = ('user', 'phone', 'isLead', 'isFollow','isActive')
-    list_filter = ('isLead', 'isFollow', 'year', 'isActive')
+    list_display = ('user', 'phone', 'is_lead', 'is_follow','is_active')
+    list_filter = ('is_lead', 'is_follow', 'year', 'is_active')
 
 admin.site.register(Instructor, InstructorAdmin)

@@ -48,9 +48,9 @@ class Instructor(models.Model):
     year = models.IntegerField()
     # TODO add phone validation
     phone = models.CharField(max_length=15)
-    isLead = models.BooleanField(default=False)
-    isFollow = models.BooleanField(default=False)
-    isActive = models.BooleanField(default=True)
+    is_lead = models.BooleanField(default=False, verbose_name="lead")
+    is_follow = models.BooleanField(default=False, verbose_name="follow")
+    is_active = models.BooleanField(default=True, verbose_name="active")
     notes = models.TextField(null=True, blank=True)
     def __str__(self):
         return self.user.first_name
@@ -58,6 +58,6 @@ class Instructor(models.Model):
 class Teaches(models.Model):
     practice = models.ForeignKey(Practice)
     lesson = models.ForeignKey(Lesson)
-    lead_instructor = models.ForeignKey(Instructor, related_name="teaches_lead", blank=True, null=True, limit_choices_to={'isActive': True, 'isLead': True})
-    follow_instructor = models.ForeignKey(Instructor, related_name="teaches_follow", blank=True, null=True, limit_choices_to={'isActive': True, 'isFollow': True})
+    lead_instructor = models.ForeignKey(Instructor, related_name="teaches_lead", blank=True, null=True, limit_choices_to={'is_active': True, 'is_lead': True})
+    follow_instructor = models.ForeignKey(Instructor, related_name="teaches_follow", blank=True, null=True, limit_choices_to={'is_active': True, 'is_follow': True})
     notes = models.CharField(max_length=200, blank=True, null=True)
