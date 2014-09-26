@@ -53,9 +53,11 @@ class Instructor(models.Model):
     isActive = models.BooleanField(default=True)
     notes = models.TextField(null=True, blank=True)
     def __str__(self):
-        return self.user.__str__
+        return self.user.first_name
 
 class Teaches(models.Model):
     practice = models.ForeignKey(Practice)
     lesson = models.ForeignKey(Lesson)
+    lead_instructor = models.ForeignKey(Instructor, related_name="teaches_lead", blank=True, null=True, limit_choices_to={'isActive': True, 'isLead': True})
+    follow_instructor = models.ForeignKey(Instructor, related_name="teaches_follow", blank=True, null=True, limit_choices_to={'isActive': True, 'isFollow': True})
     notes = models.CharField(max_length=200, blank=True, null=True)
