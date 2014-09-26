@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Lesson(models.Model):
     # first in tuple stored in database and used as title in admin table,
@@ -43,18 +44,16 @@ class Practice(models.Model):
         return date_string + " - " + self.overview
 
 class Instructor(models.Model):
-    first = models.CharField(max_length=200)
-    last = models.CharField(max_length=200)
+    user = models.ForeignKey(User, unique=True)
     year = models.IntegerField()
     # TODO add phone validation
     phone = models.CharField(max_length=15)
-    email = models.EmailField()
     isLead = models.BooleanField(default=False)
     isFollow = models.BooleanField(default=False)
     isActive = models.BooleanField(default=True)
     notes = models.TextField(null=True, blank=True)
     def __str__(self):
-        return self.first + " " + self.last
+        return self.user.__str__
 
 class Teaches(models.Model):
     practice = models.ForeignKey(Practice)
