@@ -19,6 +19,10 @@ Run dev server on [port] - default is 8000, admin at /admin
 
 `python manage.py runserver <port>`
 
+You can also use foreman, which uses the web command from the Procfile
+
+`foreman start`
+
 ### Changing models
 
 1. Change models
