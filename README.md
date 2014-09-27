@@ -1,0 +1,63 @@
+# Salsa Lessons
+An app for organizing instructors and lesson plans for the University Salsa Club at UVa's weekly practices.
+
+## Versions
+Python 3.2.5
+Django 1.7
+
+## Commands
+
+### Workflow
+
+Activate virtualenv
+
+`source env/bin/activate`
+
+Run dev server on [port] - default is 8000, admin at /admin
+
+`python manage.py runserver <port>`
+
+### Changing models
+
+1. Change models
+2. Create migrations for those changes
+  `python manage.py makemigrations`
+3. Apply those changes to the database
+  `python manage.py migrate`
+
+### Set Up
+
+Activate virtualenv
+
+`source env/bin/activate`
+
+Update dependencies and requirements.txt
+
+`pip freeze > requirements.txt`
+
+`pip install -r requirements.txt`
+
+Create settings for environment [env]
+
+`cp settings.py.templ setttings-[env].py`
+
+`ln -s settings-[env].py settings.py`
+
+
+Update database info and timezone
+
+    'Databases =
+      'default': {
+          'NAME': 'name',
+          'ENGINE': 'mysql.connector.django',
+          'USER': 'user',
+          'PASSWORD': 'password',
+          'OPTIONS': {
+            'autocommit': True,
+          },
+      }
+    }
+
+Create superuser
+
+`python manage.py createsuperuser`
