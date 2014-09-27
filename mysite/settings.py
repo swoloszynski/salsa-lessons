@@ -88,6 +88,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+# Static asset configuration heroku
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+# Heroku url settings
 if (os.environ.get('LESSONS_ENV') == 'heroku'):
     DATABASES['default'] =  dj_database_url.config()
