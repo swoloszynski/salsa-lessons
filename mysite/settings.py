@@ -91,9 +91,10 @@ USE_TZ = True
 # Static asset configuration heroku
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(PROJECT_PATH, 'static'),
 )
 
 # Heroku url settings
