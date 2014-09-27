@@ -10,7 +10,6 @@ notes.txt
 
 # Ignore virtualenv files
 env/
-requirements.txt
 
 # Python shell patch script
 patch_readline_issue_18458.sh
