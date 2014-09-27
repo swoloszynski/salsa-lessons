@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'NAME': os.environ.get('LESSONS_DB_NAME'),
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'USER': os.environ.get('LESSONS_DB_USER'),
         'PASSWORD': os.environ.get('LESSONS_DB_PASSWORD'),
         'OPTIONS': {
