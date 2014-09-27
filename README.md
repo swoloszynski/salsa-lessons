@@ -13,6 +13,8 @@ Activate virtualenv
 
 `source env/bin/activate`
 
+Ensure that environment variables are set correctly (see Set Up section)
+
 Run dev server on [port] - default is 8000, admin at /admin
 
 `python manage.py runserver <port>`
@@ -26,6 +28,12 @@ Run dev server on [port] - default is 8000, admin at /admin
   `python manage.py migrate`
 
 ### Set Up
+
+Ensure that environment variables are set:
+
+	LESSONS_DB_NAME
+	LESSONS_DB_USER
+	LESSONS_DB_PASSWORD
 
 Activate virtualenv
 
@@ -46,7 +54,7 @@ Create settings for environment [env]
 
 Update database info and timezone
 
-    'Databases =
+    Databases =
       'default': {
           'NAME': 'name',
           'ENGINE': 'mysql.connector.django',

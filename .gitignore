@@ -1,10 +1,6 @@
 # Ignore compiled files
 *.pyc
 
-# Igonore local settings and sym link
-mysite/settings.py
-mysite/settings-local.py
-
 # Ignore development notes
 notes.txt
 

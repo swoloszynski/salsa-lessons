@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lessons',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,10 +58,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'name',
+        'NAME': os.environ.get('LESSONS_DB_NAME'),
         'ENGINE': 'mysql.connector.django',
-        'USER': 'user',
-        'PASSWORD': 'password',
+        'USER': os.environ.get('LESSONS_DB_USER'),
+        'PASSWORD': os.environ.get('LESSONS_DB_PASSWORD'),
         'OPTIONS': {
           'autocommit': True,
         },
@@ -72,7 +73,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 
