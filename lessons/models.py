@@ -1,6 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Instructor(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    year = models.IntegerField()
+    # TODO add phone validation
+    phone = models.CharField(max_length=15)
+    is_lead = models.BooleanField(default=False, verbose_name="lead")
+    is_follow = models.BooleanField(default=False, verbose_name="follow")
+    is_active = models.BooleanField(default=True, verbose_name="active")
+    notes = models.TextField(null=True, blank=True)
+    def __str__(self):
+        return self.user.first_name
+
 class Lesson(models.Model):
     # first in tuple stored in database and used as title in admin table,
     # second displayed in admin drop down
@@ -38,22 +50,12 @@ class Practice(models.Model):
     location = models.CharField(max_length=200, blank=True)
     overview = models.CharField(max_length=200)
     notes = models.CharField(max_length=700, blank=True, null=True)
+    timing_and_music_1 = models.ForeignKey(Instructor, related_name="timing_1", blank=True, null=True, limit_choices_to={'is_active': True})
+    timing_and_music_2 = models.ForeignKey(Instructor, related_name="timing_2", blank=True, null=True, limit_choices_to={'is_active': True})
     teachings = models.ManyToManyField(Lesson, through='Teaches', through_fields=('practice', 'lesson'))
     def __str__(self):
         date_string = self.date.strftime("%b %d, %Y")
         return date_string + " - " + self.overview
-
-class Instructor(models.Model):
-    user = models.ForeignKey(User, unique=True)
-    year = models.IntegerField()
-    # TODO add phone validation
-    phone = models.CharField(max_length=15)
-    is_lead = models.BooleanField(default=False, verbose_name="lead")
-    is_follow = models.BooleanField(default=False, verbose_name="follow")
-    is_active = models.BooleanField(default=True, verbose_name="active")
-    notes = models.TextField(null=True, blank=True)
-    def __str__(self):
-        return self.user.first_name
 
 class Teaches(models.Model):
     practice = models.ForeignKey(Practice)
