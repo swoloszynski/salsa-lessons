@@ -4,6 +4,7 @@ An app for organizing instructors and lesson plans for the University Salsa Club
 ## Versions
 Python 3.2.5
 Django 1.7
+Postgres(.app) 9.3.5.1
 
 ## Commands
 
@@ -21,7 +22,8 @@ Run dev server on [port] - default is 8000, admin at /admin
 
 You can also use foreman, which uses the web command from the Procfile
 
-`foreman start`
+  gunicorn mysite.wsgi
+  foreman start
 
 ### Changing models
 
