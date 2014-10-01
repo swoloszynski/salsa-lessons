@@ -46,9 +46,16 @@ class Lesson(models.Model):
         return name
 
 class Practice(models.Model):
+    DRAFT = 'D'
+    PUBLISHED = 'P'
+    STATUS_CHOICES = (
+        (DRAFT, 'Draft'),
+        (PUBLISHED, 'Published'),
+    )
+    overview = models.CharField(max_length=200)
     date = models.DateField()
     location = models.CharField(max_length=200, blank=True)
-    overview = models.CharField(max_length=200)
+    status = models.CharField(max_length=200, choices=STATUS_CHOICES, default=DRAFT)
     notes = models.CharField(max_length=700, blank=True, null=True)
     timing_and_music_1 = models.ForeignKey(Instructor, related_name="timing_1", blank=True, null=True, limit_choices_to={'is_active': True})
     timing_and_music_2 = models.ForeignKey(Instructor, related_name="timing_2", blank=True, null=True, limit_choices_to={'is_active': True})
