@@ -1,9 +1,9 @@
 {% if upcoming_practice_list %}
     <ul>
     {% for practice in upcoming_practice_list %}
-        <li><a href="/lessons/{{ practice.id }}/">{{ practice.overview }}</a></li>
+        <li><a href="{% url 'practice_detail' practice.id %}">{{ practice.overview }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No practices are available.</p>
 {% endif %}
