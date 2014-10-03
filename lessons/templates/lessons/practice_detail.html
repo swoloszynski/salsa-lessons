@@ -1,2 +1,8 @@
 <h1>{{ practice.overview }}</h1>
 <h2>{{ practice.date }} - {{practice.location}}</h2>
+
+<ul>
+{% for assignment in assignments %}
+    <li>{{ assignment.lesson }}</li>
+{% endfor %}
+</ul>
