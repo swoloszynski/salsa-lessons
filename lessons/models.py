@@ -46,9 +46,11 @@ class Lesson(models.Model):
         return name
 
 class Practice(models.Model):
+    SCHEDULED = 'S'
     DRAFT = 'D'
     PUBLISHED = 'P'
     STATUS_CHOICES = (
+        (SCHEDULED, 'Scheduled'),
         (DRAFT, 'Draft'),
         (PUBLISHED, 'Published'),
     )
