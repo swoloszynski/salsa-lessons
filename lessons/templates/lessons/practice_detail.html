@@ -1,3 +1,5 @@
+{% extends "lessons/base.html" %}
+{% block content %}
 <h1>{{ practice.overview }}</h1>
 <h2>{{ practice.date }} - {{practice.location}}</h2>
 
@@ -12,3 +14,4 @@
   This practice's lessons have not yet been published.
 </p>
 {% endif %}
+{% endblock content %}

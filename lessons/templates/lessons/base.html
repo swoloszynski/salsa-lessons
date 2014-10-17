@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'lessons/style.css' %}" />
+    <script src="{% static 'lessons/javascript.js' %}"></script>
+    <!-- Latest compiled and minified CSS for Bootstrap -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title%}Salsa Lessons{% endblock title%}</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Salsa!</h1>
+    {% endblock content %}
+</body>

@@ -1,9 +1,13 @@
-{% if upcoming_practice_list %}
+{% extends "lessons/base.html" %}
+{% block content %}
+  <h1>Practices</h1>
+  {% if upcoming_practice_list %}
     <ul>
     {% for practice in upcoming_practice_list %}
-        <li><a href="{% url 'practice_detail' practice.id %}">{{ practice.overview }}</a></li>
+      <li><a href="{% url 'practice_detail' practice.id %}">{{ practice.overview }}</a></li>
     {% endfor %}
     </ul>
-{% else %}
+  {% else %}
     <p>No practices are available.</p>
-{% endif %}
+  {% endif %}
+{% endblock content %}
