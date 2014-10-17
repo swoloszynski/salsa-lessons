@@ -9,7 +9,7 @@ def index(request):
 
 def practice_detail(request, practice_id):
     practice = get_object_or_404(Practice, pk=practice_id)
-    assignments = practice.teaches_set.all()
+    assignments = practice.teaches_set.order_by('hour')
     context = {
       'practice': practice,
       'assignments': assignments
