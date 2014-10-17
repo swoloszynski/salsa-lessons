@@ -1,22 +1,51 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'lessons/style.css' %}" />
-    <script src="{% static 'lessons/javascript.js' %}"></script>
-    <!-- Latest compiled and minified CSS for Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title%}Salsa Lessons{% endblock title%}</title>
-</head>
-<body>
-    {% block content %}
-    <h1>Salsa!</h1>
-    {% endblock content %}
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+    rel="stylesheet">
+  </head>
+
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+    >
+    </script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    >
+    </script>
+    <div class="container">
+      <nav class="navbar navbar-default navbar-inverse" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><b>Salsa Lessons</b></a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="#">Syllabus</a>
+            </li>
+            <li>
+            </li>
+            <li>
+              <a href="#">Request</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      {% block header %}
+      <h1>Salsa!</h1>
+      {% endblock header %}
+      {% block content %}
+      <h1>Learn about lessons here</h1>
+      {% endblock content %}
+    </div>
+  </body>
+
+</html>

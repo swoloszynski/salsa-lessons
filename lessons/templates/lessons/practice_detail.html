@@ -1,17 +1,38 @@
 {% extends "lessons/base.html" %}
-{% block content %}
-<h1>{{ practice.overview }}</h1>
-<h2>{{ practice.date }} - {{practice.location}}</h2>
 
-{% if practice.status == 'P' %}
-<ul>
-{% for assignment in assignments %}
-    <li>{{ assignment.lesson }}</li>
-{% endfor %}
-</ul>
-{% else %}
-<p>
-  This practice's lessons have not yet been published.
-</p>
-{% endif %}
+{% block header %}
+  <div class="page-header">
+    <h3 class="text-center">{{ practice.date }} - {{ practice.overview }}</h3>
+    <h5 class="text-center">Location: {{ practice.location }}</h5>
+  </div>
+{% endblock header %}
+
+{% block content %}
+  {% if practice.status == 'P' %}
+  <table class="table">
+    <tbody>
+      <tr id="" class="table-header row-header-colored active">
+        <td>Hour</td>
+        <td>Style &amp; Level</td>
+        <td>Instructors</td>
+      </tr>
+      {% for assignment in assignments %}
+      <tr>
+        <td>{{ assignment.hour }}</td>
+        <td>{{ assignment.lesson }}</td>
+        <td>
+        {% if assignment.lead_instructor %}
+            {{ assignment.lead_instructor }}
+        {% endif %}
+        {% if assignment.lead_instructor and assignment.follow_instructor %}
+            <br>
+        {% endif %}
+        {% if assignment.follow_instructor %}
+            {{ assignment.follow_instructor }}</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+  {% else %}
+    <p>This practice's lessons have not yet been published.</p>
+  {% endif %}
 {% endblock content %}

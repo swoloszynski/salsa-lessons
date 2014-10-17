@@ -1,13 +1,30 @@
 {% extends "lessons/base.html" %}
+
+{% block header %}
+  <div class="page-header">
+    <h3 class="text-center">
+      Upcoming Lessons
+    </h3>
+  </div>
+{% endblock header %}
+
 {% block content %}
-  <h1>Practices</h1>
-  {% if upcoming_practice_list %}
-    <ul>
-    {% for practice in upcoming_practice_list %}
-      <li><a href="{% url 'practice_detail' practice.id %}">{{ practice.overview }}</a></li>
-    {% endfor %}
-    </ul>
-  {% else %}
-    <p>No practices are available.</p>
-  {% endif %}
+  <table class="table">
+    <tbody>
+      <tr id="" class="table-header row-header-colored active">
+        <td>Date</td>
+        <td>Location</td>
+        <td>Lesson Theme</td>
+      </tr>
+      {% if upcoming_practice_list %}
+        {% for practice in upcoming_practice_list %}
+          <tr>
+            <td><a href="{% url 'practice_detail' practice.id %}">{{ practice.date }}</a></td>
+            <td>{{ practice.location }}</td>
+            <td>{{ practice.overview }}</td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <p>No practices are available.</p>
+      {% endif %}
 {% endblock content %}
