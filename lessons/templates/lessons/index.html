@@ -21,7 +21,13 @@
           <tr>
             <td>{{ practice.date }}</td>
             <td>{{ practice.location }}</td>
-            <td><a href="{% url 'practice_detail' practice.id %}">{{ practice.overview }}</a></td>
+            <td>
+              {% if practice.status == 'P' %}
+              <a href="{% url 'practice_detail' practice.id %}">{{ practice.overview }}</a>
+              {% else %}
+              {{ practice.overview }}
+              {% endif %}
+            </td>
           </tr>
         {% endfor %}
       {% else %}
