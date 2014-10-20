@@ -19,9 +19,9 @@
       {% if upcoming_practice_list %}
         {% for practice in upcoming_practice_list %}
           <tr>
-            <td><a href="{% url 'practice_detail' practice.id %}">{{ practice.date }}</a></td>
+            <td>{{ practice.date }}</td>
             <td>{{ practice.location }}</td>
-            <td>{{ practice.overview }}</td>
+            <td><a href="{% url 'practice_detail' practice.id %}">{{ practice.overview }}</a></td>
           </tr>
         {% endfor %}
       {% else %}
