@@ -19,8 +19,8 @@ class PracticeAdmin(admin.ModelAdmin):
         TeachingsInline,
     ]
     exclude = ('lessons',)
-    list_display = ('date','overview', 'location')
-    list_filter = ['date', 'overview', 'location']
+    list_display = ('date','overview', 'status', 'location')
+    list_filter = ['date', 'overview', 'status', 'location']
 
 admin.site.register(Practice, PracticeAdmin)
 
