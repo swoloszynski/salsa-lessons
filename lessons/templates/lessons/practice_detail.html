@@ -19,7 +19,11 @@
       {% for assignment in assignments %}
       <tr>
         <td>{{ assignment.hour }}</td>
-        <td>{{ assignment.lesson }}</td>
+        <td>
+          <span class='lesson-title'>{{ assignment.lesson }}</span>
+          <br>
+          <span class='lesson-content'>{{ assignment.lesson.content|linebreaks }}</span>
+        </td>
         <td>
         {% if assignment.lead_instructor %}
             {{ assignment.lead_instructor }}
