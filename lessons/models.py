@@ -62,6 +62,8 @@ class Practice(models.Model):
     timing_and_music_1 = models.ForeignKey(Instructor, related_name="timing_1", blank=True, null=True, limit_choices_to={'is_active': True})
     timing_and_music_2 = models.ForeignKey(Instructor, related_name="timing_2", blank=True, null=True, limit_choices_to={'is_active': True})
     teachings = models.ManyToManyField(Lesson, through='Teaches', through_fields=('practice', 'lesson'))
+    class Meta:
+        ordering = ['date']
     def __str__(self):
         date_string = self.date.strftime("%b %d, %Y")
         return date_string + " - " + self.overview
@@ -75,5 +77,6 @@ class Teaches(models.Model):
     hour = models.TimeField(blank=True, null=True)
     class Meta:
         verbose_name = "assignment"
+        ordering = ['hour']
     def __str__(self):
         return "Lesson Assignment"
