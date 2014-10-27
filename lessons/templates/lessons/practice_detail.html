@@ -22,7 +22,13 @@
         <td>
           <span class='lesson-title'>{{ assignment.lesson }}</span>
           <br>
-          <span class='lesson-content'>{{ assignment.lesson.content|linebreaks }}</span>
+          <span class='lesson-content'>
+            {% if assignment.notes %}
+            Notes: {{ assignment.notes}}
+            <br>
+            {% endif %}
+            {{ assignment.lesson.content|linebreaks }}
+          </span>
         </td>
         <td>
         {% if assignment.lead_instructor %}
