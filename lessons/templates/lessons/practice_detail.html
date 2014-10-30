@@ -1,5 +1,4 @@
 {% extends "lessons/base.html" %}
-
 {% block header %}
   <div class="page-header">
     <h3 class="text-center">{{ practice.date }} - {{ practice.overview }}</h3>
@@ -20,15 +19,18 @@
       <tr>
         <td>{{ assignment.hour }}</td>
         <td>
-          <span class='lesson-title'>{{ assignment.lesson }}</span>
+          <span class='lesson-title'><img class="arrow arrow-right" src="/static/lessons/images/arrowRight.png"/>{{ assignment.lesson }}</span>
           <br>
-          <span class='lesson-content'>
+          <div class='lesson-content-container hidden'>
             {% if assignment.notes %}
-            Notes: {{ assignment.notes}}
-            <br>
+            <p class='lesson-notes'>
+              Notes: {{ assignment.notes}}
+            </p>
             {% endif %}
-            {{ assignment.lesson.content|linebreaks }}
-          </span>
+            <p class='lesson-desc'>
+              {{ assignment.lesson.content|linebreaks }}
+            </p>
+          </div>
         </td>
         <td>
         {% if assignment.lead_instructor %}
