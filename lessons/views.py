@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
-from lessons.models import Practice, Lesson, Teaches
+from lessons.models import Practice, Lesson, Teaches, Instructor
 
 def index(request):
     upcoming_practice_list = Practice.objects.order_by('date')
@@ -15,3 +15,8 @@ def practice_detail(request, practice_id):
       'assignments': assignments
     }
     return render(request, 'lessons/practice_detail.html', context)
+
+def instructors(request):
+    instructor_list = Instructor.objects.exclude(is_active=False)
+    context = {'instructor_list': instructor_list}
+    return render(request, 'lessons/instructors.html', context)
