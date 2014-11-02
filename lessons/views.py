@@ -17,6 +17,8 @@ def practice_detail(request, practice_id):
     return render(request, 'lessons/practice_detail.html', context)
 
 def instructors(request):
-    instructor_list = Instructor.objects.exclude(is_active=False)
-    context = {'instructor_list': instructor_list}
+    instructors = Instructor.objects.exclude(is_active=False)
+    assignments = Teaches.objects.order_by('-practice')
+    practices = Practice.objects.all()
+    context = {'instructors': instructors, 'assignments': assignments, 'practices': practices}
     return render(request, 'lessons/instructors.html', context)

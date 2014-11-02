@@ -9,4 +9,43 @@
 {% endblock header %}
 
 {% block content %}
+  <table class="table">
+    <tbody>
+      <tr class="table-header row-header-colored active">
+        <td>Date</td>
+        {% for instructor in instructors %}
+        <td>{{ instructor }}</td>
+        {% endfor %}
+      </tr>
+      {% for practice in practices %}
+      <tr>
+        <td>{{ practice.date }}</td>
+        {% for i in instructors %}
+        <td>
+          {% for a in assignments %}
+
+            {% if a.practice.date == practice.date %}
+
+              {% if a.follow_instructor == i %}
+                {{ a.lesson }}
+                {% if a.lead_instructor %}
+                  ({{ a.lead_instructor }})<br>
+                {% endif %}
+                <br>
+              {% elif a.lead_instructor == i %}
+                {{ a.lesson }}
+                {% if a.follow_instructor %}
+                  ({{ a.follow_instructor }})<br>
+                {% endif %}
+                <br>
+
+              {% endif %}
+
+            {% endif %}
+
+          {% endfor %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
 {% endblock content %}
