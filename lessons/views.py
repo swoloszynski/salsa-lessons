@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from lessons.models import Practice, Lesson, Teaches, Instructor
 
@@ -16,9 +16,21 @@ def practice_detail(request, practice_id):
     }
     return render(request, 'lessons/practice_detail.html', context)
 
-def instructors(request):
-    instructors = Instructor.objects.exclude(is_active=False)
+def instructors_leads(request):
+    instructors = Instructor.objects.exclude(is_active=False).exclude(is_lead=False)
     assignments = Teaches.objects.order_by('-practice')
     practices = Practice.objects.all()
-    context = {'instructors': instructors, 'assignments': assignments, 'practices': practices}
+    leads = True
+    context = {'instructors': instructors, 'assignments': assignments, 'practices': practices, 'leads': leads}
     return render(request, 'lessons/instructors.html', context)
+
+def instructors_follows(request):
+    instructors = Instructor.objects.exclude(is_active=False).exclude(is_follow=False)
+    assignments = Teaches.objects.order_by('-practice')
+    practices = Practice.objects.all()
+    follows = True
+    context = {'instructors': instructors, 'assignments': assignments, 'practices': practices, 'follows': follows}
+    return render(request, 'lessons/instructors.html', context)
+
+def instructors(request):
+    return redirect('instructors_leads')
