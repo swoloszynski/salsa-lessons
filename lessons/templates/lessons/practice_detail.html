@@ -36,12 +36,24 @@
         {% if assignment.lead_instructor %}
             {{ assignment.lead_instructor }}
         {% endif %}
+
         {% if assignment.lead_instructor and assignment.follow_instructor %}
             <br>
         {% endif %}
+
         {% if assignment.follow_instructor %}
-            {{ assignment.follow_instructor }}</td>
+            {{ assignment.follow_instructor }}
         {% endif %}
+
+        {% if assignment.lead_instructor or assignment.follow_instructor %}
+          {% if assignment.additional_instructor %}
+          <br>
+          {% endif %}
+        {% endif %}
+        {% if assignment.additional_instructor %}
+          {{ assignment.additional_instructor }}
+        {% endif %}
+        </td>
       </tr>
       {% endfor %}
   {% else %}

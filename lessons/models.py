@@ -73,6 +73,7 @@ class Teaches(models.Model):
     lesson = models.ForeignKey(Lesson)
     lead_instructor = models.ForeignKey(Instructor, related_name="teaches_lead", blank=True, null=True, limit_choices_to={'is_active': True, 'is_lead': True})
     follow_instructor = models.ForeignKey(Instructor, related_name="teaches_follow", blank=True, null=True, limit_choices_to={'is_active': True, 'is_follow': True})
+    additional_instructor = models.ForeignKey(Instructor, related_name="teaches_additional", blank=True, null=True, limit_choices_to={'is_active': True})
     notes = models.CharField(max_length=200, blank=True, null=True)
     hour = models.TimeField(blank=True, null=True)
     class Meta:
