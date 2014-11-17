@@ -28,7 +28,7 @@
             </p>
             {% endif %}
             <p class='lesson-desc'>
-              {{ assignment.lesson.content|linebreaks }}
+              {{ assignment.lesson.content|urlize|linebreaks }}
             </p>
           </div>
         </td>
