@@ -33,20 +33,23 @@
         {% for i in instructors %}
         <td>
           {% for a in assignments %}
-
             {% if a.practice.date == practice.date %}
 
               {% if a.follow_instructor == i %}
+                <span class="assignment {{ a.lesson.style}} {{a.lesson.level}}">
                 {{ a.lesson }}
                 {% if a.lead_instructor %}
                   ({{ a.lead_instructor }})<br>
                 {% endif %}
+                </span>
                 <br>
               {% elif a.lead_instructor == i %}
+                <span class="assignment {{ a.lesson.style}} {{a.lesson.level}}">
                 {{ a.lesson }}
                 {% if a.follow_instructor %}
                   ({{ a.follow_instructor }})<br>
                 {% endif %}
+                </span>
                 <br>
 
               {% endif %}
