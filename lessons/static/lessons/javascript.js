@@ -30,4 +30,13 @@ $(document).ready(function(){
     }
 
   });
+
+  $('#highlight-levels').change(function(){
+    if ($(this).is(':checked')) {
+      $('.assignment').addClass("level-highlighted");
+    }
+    else {
+      $('.assignment').removeClass("level-highlighted");
+    }
+  });
 });

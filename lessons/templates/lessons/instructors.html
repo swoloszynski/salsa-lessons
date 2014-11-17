@@ -1,20 +1,31 @@
 {% extends "lessons/base.html" %}
 
 {% block header %}
-  <div class="page-header">
-    <h3 class="text-center">
-      {% if leads %}
-      Lead
-      {% elif follows %}
-      Follow
-      {% endif %}
-      Instructors
-    </h3>
-    {% if leads %}
-    <h4 class="text-center"><a href="{% url 'instructors_follows' %}">Follows</a></h4>
-    {% elif follows %}
-    <h4 class="text-center"><a class="text-center" href="{% url 'instructors_leads' %}">Leads</a></h4>
-    {% endif %}
+  <div>
+    <div class="page-header row">
+      <div class="col-md-4">
+        <label class="checkbox">
+          <input type="checkbox" id="highlight-levels">
+          Highlight Levels
+        </label>
+      </div>
+      <div class="col-md-4">
+        <h3 class="text-center">
+          {% if leads %}
+          Lead
+          {% elif follows %}
+          Follow
+          {% endif %}
+          Instructors
+        </h3>
+        {% if leads %}
+        <h4 class="text-center"><a href="{% url 'instructors_follows' %}">Follows</a></h4>
+        {% elif follows %}
+        <h4 class="text-center"><a class="text-center" href="{% url 'instructors_leads' %}">Leads</a></h4>
+        {% endif %}
+      </div>
+      <div class="col-md-4">
+    </div>
   </div>
 {% endblock header %}
 
