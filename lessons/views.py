@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from lessons.models import Practice, Lesson, Teaches, Instructor
-
+import datetime
 def index(request):
     upcoming_practice_list = Practice.objects.order_by('date')
     context = {'upcoming_practice_list': upcoming_practice_list}
@@ -19,7 +19,7 @@ def practice_detail(request, practice_id):
 def instructors_leads(request):
     instructors = Instructor.objects.exclude(is_active=False).exclude(is_lead=False)
     assignments = Teaches.objects.order_by('-practice')
-    practices = Practice.objects.order_by('-date')
+    practices = Practice.objects.order_by('-date').exclude(date__gt=datetime.date.today() + datetime.timedelta(days=7))
     leads = True
     context = {'instructors': instructors, 'assignments': assignments, 'practices': practices, 'leads': leads}
     return render(request, 'lessons/instructors.html', context)
@@ -27,7 +27,7 @@ def instructors_leads(request):
 def instructors_follows(request):
     instructors = Instructor.objects.exclude(is_active=False).exclude(is_follow=False)
     assignments = Teaches.objects.order_by('-practice')
-    practices = Practice.objects.order_by('-date')
+    practices = Practice.objects.order_by('-date').exclude(date__gt=datetime.date.today() + datetime.timedelta(days=7))
     follows = True
     context = {'instructors': instructors, 'assignments': assignments, 'practices': practices, 'follows': follows}
     return render(request, 'lessons/instructors.html', context)
