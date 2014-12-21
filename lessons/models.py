@@ -13,16 +13,15 @@ class Instructor(models.Model):
     def __str__(self):
         return self.user.first_name
 
+class Level(models.Model):
+    name = models.CharField(max_length=200)
+    position = models.IntegerField()
+    def __str__(self):
+        return self.name
+
 class Lesson(models.Model):
     # first in tuple stored in database and used as title in admin table,
     # second displayed in admin drop down
-    LEVEL_CHOICES = (
-        ('Intro', 'Intro'),
-        ('Beginner', 'Beginner'),
-        ('Accelerated Beginner', 'Accelerated Beginner'),
-        ('Intermediate', 'Intermediate'),
-        ('Advanced', 'Advanced'),
-    )
     Style_CHOICES = (
         ('On1 Salsa', 'On1 Salsa'),
         ('On2 Salsa', 'On2 Salsa'),
@@ -31,13 +30,13 @@ class Lesson(models.Model):
         ('Rueda', 'Rueda'),
     )
     title = models.CharField(max_length=200)
-    level = models.CharField(max_length=200, choices=LEVEL_CHOICES, blank=True)
+    level = models.ForeignKey(Level, default = 1)
     style = models.CharField(max_length=200, choices=Style_CHOICES, blank=True)
     content = models.TextField()
     def __str__(self):
         name = ""
-        if (self.level != ""):
-            name += self.level + " "
+        if (self.level.name != ""):
+            name += self.level.name + " "
         if (self.style != ""):
             name += self.style + " "
         if (name != ""):

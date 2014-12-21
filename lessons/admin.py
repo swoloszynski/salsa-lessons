@@ -1,5 +1,5 @@
 from django.contrib import admin
-from lessons.models import Practice, Lesson, Instructor
+from lessons.models import Practice, Lesson, Instructor, Level
 
 class TeachingsInline(admin.TabularInline):
     model = Practice.teachings.through
@@ -29,3 +29,10 @@ class InstructorAdmin(admin.ModelAdmin):
     list_filter = ('is_lead', 'is_follow', 'year', 'is_active')
 
 admin.site.register(Instructor, InstructorAdmin)
+
+class LevelAdmin(admin.ModelAdmin):
+    list_display = ('name', 'position')
+    list_editable = ('position',)
+    ordering = ('position',)
+
+admin.site.register(Level, LevelAdmin)
