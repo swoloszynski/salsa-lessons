@@ -17,7 +17,8 @@ def practice_detail(request, practice_id):
     assignments = practice.teaches_set.order_by('hour')
     context = {
       'practice': practice,
-      'assignments': assignments
+      'assignments': assignments,
+      'page': 'practice_detail'
     }
     return render(request, 'lessons/practice_detail.html', context)
 
@@ -26,7 +27,13 @@ def instructors_leads(request):
     assignments = Teaches.objects.order_by('-practice')
     practices = Practice.objects.order_by('-date').exclude(date__gt=datetime.date.today() + datetime.timedelta(days=7))
     leads = True
-    context = {'instructors': instructors, 'assignments': assignments, 'practices': practices, 'leads': leads}
+    context = {
+        'instructors': instructors,
+        'assignments': assignments,
+        'practices': practices,
+        'leads': leads,
+        'page': 'instructors'
+    }
     return render(request, 'lessons/instructors.html', context)
 
 def instructors_follows(request):
@@ -34,7 +41,13 @@ def instructors_follows(request):
     assignments = Teaches.objects.order_by('-practice')
     practices = Practice.objects.order_by('-date').exclude(date__gt=datetime.date.today() + datetime.timedelta(days=7))
     follows = True
-    context = {'instructors': instructors, 'assignments': assignments, 'practices': practices, 'follows': follows}
+    context = {
+        'instructors': instructors,
+        'assignments': assignments,
+        'practices': practices,
+        'follows': follows,
+        'page': 'instructors'
+    }
     return render(request, 'lessons/instructors.html', context)
 
 def instructors(request):
