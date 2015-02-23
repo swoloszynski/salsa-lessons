@@ -38,4 +38,4 @@ You can also use foreman, which uses the web command from the Procfile
 `git push heroku master`
 
 If migrations:
-`heroku run python manage.py migrate lessons
+`heroku run python manage.py migrate lessons`
