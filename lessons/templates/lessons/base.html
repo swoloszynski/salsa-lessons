@@ -37,10 +37,22 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-            <li class="active">
+            {% if page %}
+              {% if page == 'syllabus' %}
+                <li class="active">
+              {% else %}
+                <li>
+              {% endif %}
+            {% endif %}
               <a href="{% url 'index' %}">Syllabus</a>
             </li>
-            <li>
+            {% if page %}
+              {% if page == 'guest_lessons' %}
+                <li class="active">
+              {% else %}
+                <li>
+              {% endif %}
+            {% endif %}
               <a href="{% url 'guest_lessons' %}">Guest Lessons</a>
             </li>
           </ul>

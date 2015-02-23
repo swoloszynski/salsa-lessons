@@ -4,12 +4,12 @@ from lessons.models import Practice, Lesson, Teaches, Instructor
 import datetime
 def index(request):
     upcoming_practice_list = Practice.objects.order_by('date').filter(practice_type='MP')
-    context = {'upcoming_practice_list': upcoming_practice_list}
+    context = {'upcoming_practice_list': upcoming_practice_list, 'page': 'syllabus'}
     return render(request, 'lessons/index.html', context)
 
 def guest_lessons(request):
     upcoming_practice_list = Practice.objects.order_by('-date').filter(practice_type='GL')
-    context = {'upcoming_practice_list': upcoming_practice_list}
+    context = {'upcoming_practice_list': upcoming_practice_list, 'page': 'guest_lessons'}
     return render(request, 'lessons/guest_lessons.html', context)
 
 def practice_detail(request, practice_id):
