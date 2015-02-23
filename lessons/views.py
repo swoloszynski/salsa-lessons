@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from lessons.models import Practice, Lesson, Teaches, Instructor
 import datetime
 def index(request):
-    upcoming_practice_list = Practice.objects.order_by('date')
+    upcoming_practice_list = Practice.objects.order_by('date').filter(practice_type='MP')
     context = {'upcoming_practice_list': upcoming_practice_list}
     return render(request, 'lessons/index.html', context)
 

@@ -53,10 +53,22 @@ class Practice(models.Model):
         (DRAFT, 'Draft'),
         (PUBLISHED, 'Published'),
     )
+    MONDAY_PRACTICE = 'MP'
+    OFFICE_HOURS = 'OH'
+    GUEST_LESSON = 'GL'
+    OTHER = 'O'
+    TYPE_CHOICES = (
+        (MONDAY_PRACTICE, 'Monday Practice'),
+        (OFFICE_HOURS, 'Office Hours'),
+        (GUEST_LESSON, 'Guest Lesson'),
+        (OTHER, 'Other'),
+    )
+
     overview = models.CharField(max_length=200)
     date = models.DateField()
     location = models.CharField(max_length=200, blank=True)
     status = models.CharField(max_length=200, choices=STATUS_CHOICES, default=DRAFT)
+    practice_type = models.CharField(max_length=200, choices=TYPE_CHOICES, default=MONDAY_PRACTICE)
     notes = models.CharField(max_length=700, blank=True, null=True)
     timing_and_music_1 = models.ForeignKey(Instructor, related_name="timing_1", blank=True, null=True, limit_choices_to={'is_active': True})
     timing_and_music_2 = models.ForeignKey(Instructor, related_name="timing_2", blank=True, null=True, limit_choices_to={'is_active': True})
