@@ -14,7 +14,7 @@ Activate virtualenv
 
 `source env/bin/activate`
 
-Ensure that environment variables are set correctly (see Set Up section)
+Ensure that environment variables are set correctly (see INSTALL.md)
 
 Run dev server on [port] - default is 8000, admin at /admin
 
@@ -33,45 +33,9 @@ You can also use foreman, which uses the web command from the Procfile
 3. Apply those changes to the database
   `python manage.py migrate`
 
-### Set Up
+### Deploy to Heroku
 
-Ensure that environment variables are set:
+`git push heroku master`
 
-	LESSONS_DB_NAME
-	LESSONS_DB_USER
-	LESSONS_DB_PASSWORD
-
-Activate virtualenv
-
-`source env/bin/activate`
-
-Update dependencies and requirements.txt
-
-`pip freeze > requirements.txt`
-
-`pip install -r requirements.txt`
-
-Create settings for environment [env]
-
-`cp settings.py.templ setttings-[env].py`
-
-`ln -s settings-[env].py settings.py`
-
-
-Update database info and timezone
-
-    Databases =
-      'default': {
-          'NAME': 'name',
-          'ENGINE': 'mysql.connector.django',
-          'USER': 'user',
-          'PASSWORD': 'password',
-          'OPTIONS': {
-            'autocommit': True,
-          },
-      }
-    }
-
-Create superuser
-
-`python manage.py createsuperuser`
+If migrations:
+`heroku run python manage.py migrate lessons
