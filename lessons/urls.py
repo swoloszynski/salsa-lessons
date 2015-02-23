@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^instructors/leads/$', views.instructors_leads, name='instructors_leads'),
     url(r'^instructors/follows/$', views.instructors_follows, name='instructors_follows'),
     url(r'^instructors/$', views.instructors, name='instructors'),
+    url(r'^guestlessons/$', views.guest_lessons, name='guest_lessons'),
 
     url(r'^$', views.index, name='index'),
 

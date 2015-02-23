@@ -7,6 +7,11 @@ def index(request):
     context = {'upcoming_practice_list': upcoming_practice_list}
     return render(request, 'lessons/index.html', context)
 
+def guest_lessons(request):
+    upcoming_practice_list = Practice.objects.order_by('-date').filter(practice_type='GL')
+    context = {'upcoming_practice_list': upcoming_practice_list}
+    return render(request, 'lessons/guest_lessons.html', context)
+
 def practice_detail(request, practice_id):
     practice = get_object_or_404(Practice, pk=practice_id)
     assignments = practice.teaches_set.order_by('hour')
