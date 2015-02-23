@@ -43,6 +43,8 @@ class Lesson(models.Model):
             name += "- "
         name += self.title
         return name
+    class Meta:
+        ordering = ['style', 'level', ]
 
 class Practice(models.Model):
     SCHEDULED = 'S'
